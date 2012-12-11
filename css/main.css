@@ -1,0 +1,102 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#gallery {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin: auto;
+    width:70%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.basket {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin:auto;
+    width:70%;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding:10px;
+}
+
+.basket .dropzone {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.basket .basketContainer {
+    min-height: 70px;
+}
+
+#gallery img {
+    height: 50px;
+}
+
+#gallery .btn {
+    margin-right: 5px;
+}
+
+.fixed {
+    position: relative;
+    top: 60px;
+}
+
+.basket .dropzone img {
+    height: 50px;
+}
+
+.basket .dropzone {
+    height: 50px;
+}
+
+.custom {
+    position: fixed;
+    list-style: none;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+h2 {
+    padding-left: 5px;
+}
+
+.collections {
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+}
+
+.collections li {
+    padding: 5px;
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.collections li a {
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+.collections li a img {
+   width: 50px;
+   height: 50px;
+}
+
+div.alert {
+    float: left;
+    padding: 10px;
+    margin: 3px;
+}
+
+button.admin {
+    margin: 5px;
+}
