@@ -16,9 +16,12 @@
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
+            .nounder:hover {
+                text-decoration: none;
+            }
         </style>
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/admin.css">
 
         <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
     </head>
@@ -34,9 +37,6 @@
         <div class="navbar-inner">
             <div class="container">
                   <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
                   </a>
                   <a class="brand" href="/">Nomadfoto</a>
                   <div class="nav-collapse collapse navbar-inverse-collapse">
@@ -45,9 +45,11 @@
                       <li><a href="basket.html">Orders</a></li>
                   </ul>-->
                     <ul class="nav pull-right">
-                        <li><a href="done.html"><span class="label label-success">Jobs Done: {5}</span></a></li>
+                        <!-- <li><a href="done.html"><span class="label label-success">Jobs Done: (5)</span></a></li> -->
+                        <li><button id="jobdone" class="btn btn-link nounder"><span class="label label-success">Jobs Done: (5)</span></button></li>
                         <li class="divider-vertical"></li>
-                        <li><a href="pending.html"><span class="label label-important">Jobs Pending: {1}</span></a></li>
+                        <!--<li><a href="pending.html"><span class="label label-important">Jobs Pending: (1)</span></a></li>-->
+                        <li><button id="jobundone" class="btn btn-link nounder"><span class="label label-important">Jobs Pending: (1)</span></button></li>
                       <!--<li><a href="#"><i class="icon-shopping-cart icon-white"></i>: $100.00</a></li>-->
                       <li class="divider-vertical"></li>
                       <li><a href="#"><i class="icon-user icon-white"></i>: admin</a></li>
@@ -56,41 +58,24 @@
             </div>
         </div><!-- /navbar-inner -->
     </div>
-        <div class="custom well">
-            <fieldset>
-                <legend>
-                    <h2>Your Job Queue</h2>
-                </legend>
-            </fieldset>
-            <div class="jobsqueue">
+    <div class="row-fluid">
+            <div class="well admin">
+                <fieldset>
+                    <legend>
+                        <h2>Your Job Queue</h2>
+                    </legend>
+                </fieldset>
+                <ul id="jobsqueue">
+                </ul>
+                <div style="clear: both">
+                </div>
             </div>
-        </div>
+    </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/admin.js"></script>
         <script src="js/jquery.hoverpulse.js"></script>
-        <script>
-            (function ($) {
-                var populate_jobs = function (node, jobs) {
-                var gallerylen = 0;
-                $.each(jobs, function (idx, job) {
-                    node.append('<div id="' + job.status + '" class="alert alert-' + job.status + '"><p><a href="' + job.url + '">' + job.title + '</a></p><p> Client Name: ' + job.client + '</p></div>');
-                })
-            }
-                $(document).ready(function () {
-                    $.getJSON('json/jobs.json', {}, function (data) {
-                        populate_jobs($('.jobsqueue'), data)
-                        $('.jobsqueue').sortable().disableSelection();
-                    });
-                    $('#done').live('click', function(event) {
-                        $("div[id=success]").each(function () {
-                            $.toggle('show');
-                        });
-                    });
-                });
-            })(jQuery);
-        </script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
