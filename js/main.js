@@ -6,7 +6,7 @@
         'basket': $(
             '<div class="basket"><div class="dropzone well">' +
             '<span class="drag-placeholder">Drag Photos Here</span>' +
-            '<ul class="thumbnails basketContainer"></ul>' + 
+            '<ul class="basketContainer" id="thumbnails"></ul>' + 
             '</div><div class="basket-form">' + 
             '<div class="form-horizontal">' +
             '<div class="control-group">' +
@@ -24,15 +24,15 @@
     var populate_gallery = function (node, images) {
         var gallerylen = 0;
         $.each(images, function (idx, image) {
-            node.append('<li><a href="#" class="thumbnail"><img src="' + image.url + '" /></a></li>');
+            node.append('<li><a href="#" class="img-polaroid" id="thumbnail"><img src="' + image.url + '" /></a></li>');
         })
         // node.width(gallerylen);
     }
 
     $(document).ready(function () {
         $.getJSON('json/images.json', {}, function (data) {
-            populate_gallery($('#gallery .thumbnails'), data)
-            $('#gallery .thumbnails').sortable().disableSelection();
+            populate_gallery($('.gallery #thumbnails'), data)
+            $('.gallery #thumbnails').sortable().disableSelection();
         });
 
         $('#add-basket').click(function (ev) {
@@ -41,7 +41,7 @@
             basket.attr('id', 'basket-' + basket_count);
             basket_count += 1;
             $('#baskets-container').append(basket);
-            $('.thumbnails', basket).droppable({
+            $('#thumbnails', basket).droppable({
                 drop: function( event, ui ) {
                     $('.drag-placeholder', basket).remove();
                     $(this).append('<li>' + ui.draggable.html() + '</li>');
@@ -60,21 +60,21 @@
                     '<a href="#" id="submit-order" class="btn btn-success">Submit Order</a>'
                 );
                 $('#submit-order').click(function () {
-                    alert($('#gallery').offset().top);//'Not implemented yet');
+                    alert($('.gallery').offset().top);//'Not implemented yet');
                 });
             }
         });
 
-        $(window).on('scroll', function () {
+        /* $(window).on('scroll', function () {
             var scrollPos = $(window).scrollTop();
-            var gallerytop = $('#gallery').offset().top;
-            var height = $('#gallery').height();
+            var gallerytop = $('.gallery').offset().top;
+            var height = $('.gallery').height();
             var gallerytop = 60;
             if (scrollPos <= gallerytop) {
-                $('#gallery').removeClass('fixed');
+                $('.gallery').removeClass('fixed');
             } else if (scrollPos > gallerytop) {
-                $('#gallery').addClass('fixed');
+                $('.gallery').addClass('fixed');
             }
-        });
+        });*/
     })
 })(jQuery);
